@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "packageManager": "npm@8.5.0",
+  "packageManager": "^pnpm@8.6.12",
   "scripts": {
     "check-types": "tsc --noEmit",
     "build": "tsc && vite build",
