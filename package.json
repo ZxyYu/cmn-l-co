@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "packageManager": "^pnpm@8.6.12",
+  "packageManager": "pnpm@8.6.12",
   "scripts": {
     "check-types": "tsc --noEmit",
     "build": "tsc && vite build",
@@ -25,5 +25,8 @@
     "turbo": "^2.4.4",
     "typescript": "^5.8.2",
     "vite-plugin-dts": "^4.5.3"
+  },
+  "dependencies": {
+    "@craftjs/core": "^0.2.12"
   }
 }
