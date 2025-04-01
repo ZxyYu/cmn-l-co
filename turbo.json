@@ -1,0 +1,21 @@
+{
+  "pipeline": {
+    "build": {
+      "command": "pnpm build",
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "test": {
+      "command": "pnpm test",
+      "dependsOn": ["build"],
+      "inputs": ["test/**/*.ts", "test/**/*.tsx"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "command": "pnpm start",
+      "cache": false
+    }
+  }
+}
