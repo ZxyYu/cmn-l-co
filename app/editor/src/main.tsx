@@ -54,9 +54,6 @@ const components = {
 
 
 createRoot(document.getElementById('root')!).render(
-  // <StrictMode>
-  //   <App />
-  // </StrictMode>,
   <ConfigProvider
   theme={{
     token,
