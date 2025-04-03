@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { css } from "@emotion/css";
-import { Button, Tooltip, Flex } from "antd";
-import { HuosRemixIcon } from "@huos/icons";
-import { PlusCircleOutlined } from "@ant-design/icons";
+import { Button, Tooltip, Flex, Typography, theme } from "antd";
+import { PlusCircleOutlined, NodeExpandOutlined, HistoryOutlined, DatabaseOutlined, DoubleLeftOutlined} from "@ant-design/icons";
 import _ from "lodash";
 
 export enum MenuTab {
@@ -13,6 +12,8 @@ export enum MenuTab {
 };
 
 const Left = () => {
+  const { token } = theme.useToken();
+  const [activeKey, setActiveKey] = useState<MenuTab>(MenuTab.COMPONENT);
 
     const classes = {
         main: css({
@@ -22,9 +23,9 @@ const Left = () => {
         }),
         menu: css({
           paddingBlock: 8,
-        //   borderRight: activeKey
-        //     ? `1px solid ${token.colorBorderSecondary}`
-        //     : undefined,
+          borderRight: activeKey
+            ? `1px solid ${token.colorBorderSecondary}`
+            : undefined,
         }),
         content: css({
           minWidth: 255,
@@ -33,7 +34,7 @@ const Left = () => {
         }),
         title: css({
           paddingInline: 12,
-        //   borderBottom: `1px solid ${token.colorBorderSecondary}`,
+          borderBottom: `1px solid ${token.colorBorderSecondary}`,
         }),
     };
 
@@ -52,17 +53,17 @@ const Left = () => {
     },
     [MenuTab.TREE]: {
       label: "面包树",
-      icon: <HuosRemixIcon type="icon-node-tree" />,
+      icon: <NodeExpandOutlined />,
     //   children: <Tree />,
     },
     [MenuTab.HISTORY]: {
       label: "历史记录",
-      icon: <HuosRemixIcon type="icon-history-fill" />,
+      icon: <HistoryOutlined />,
     //   children: <LocalHisotry />,
     },
     [MenuTab.QUERIES]: {
       label: "状态管理",
-      icon: <HuosRemixIcon type="icon-database-2-fill" />,
+      icon: <DatabaseOutlined />,
     //   children: <Queries />,
     },
   };
@@ -89,6 +90,31 @@ const Left = () => {
                 )
             )}
             </Flex>
+            {activeKey ? (
+              <div className={classes.content}>
+                <Flex
+                  justify="space-between"
+                  className={classes.title}
+                  align="center"
+                >
+                  <Typography.Text>{items?.[activeKey]?.label}</Typography.Text>
+                  <Button
+                    size="small"
+                    type="text"
+                    icon={<DoubleLeftOutlined />}
+                    onClick={() => setActiveKey(undefined)}
+                  />
+                </Flex>
+                <div
+                  style={{
+                    overflow: "auto",
+                    height: "100%",
+                  }}
+                >
+                  {items?.[activeKey]?.children}
+                </div>
+              </div>
+            ) : null}
         </div>
     );
 };
