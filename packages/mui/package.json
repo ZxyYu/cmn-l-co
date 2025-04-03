@@ -16,8 +16,6 @@
   "license": "ISC",
   "dependencies": {
     "@huos/core": "workspace:^",
-    "@huos/icons": "workspace:^",
-    "@huos/setter": "workspace:^",
     "@mui/material": "^5.15.13"
   }
 }
