@@ -9,7 +9,7 @@
   "types": "dist/index.d.mts",
   "scripts": {
     "start": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +23,8 @@
     "styled-system": "^5.1.5",
     "sucrase": "^3.34.0",
     "zustand": "^4.4.3"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0"
   }
 }
